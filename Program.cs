@@ -46,8 +46,7 @@ public class Program
         Thread.Sleep(interLetterBreak);
     }
 
-    static void Main(string[] args)
-    {
+    static void Aufg1() {
         char[] input = Console.ReadLine().ToCharArray();
         Console.Clear();
         char[] morseCode;
@@ -55,5 +54,10 @@ public class Program
             morseCode = MorseTable.GetMorseCode(c).ToCharArray();
             Flash(morseCode);
         }
+    }
+
+    static void Main(string[] args)
+    {
+        Aufg1();
     }
 }
