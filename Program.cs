@@ -45,6 +45,35 @@ public class Program
         }
         Thread.Sleep(interLetterBreak);
     }
+    // AUFGABE 2 :
+    enum Kategorie{THERMO, ELEKTRO, NONE}
+    class Aufg2{
+        private string bezeichnung;
+        private int nr;
+        private double leistung;
+        private Kategorie kategorie;
+
+        public string GetBezeichnung(){return bezeichnung;}
+        public void SetBezeichnung(string text){this.bezeichnung = text;}
+
+        //Konstruktor:
+        public Aufg2 (){
+            this.bezeichnung = "Leer";
+            this.nr=0;
+            this.leistung=0.0;
+            this.kategorie=Kategorie.ELEKTRO;
+        }
+        public Aufg2 (string bezeichnung, int nr, double leistung, Kategorie kategorie) {
+            this.bezeichnung = bezeichnung;
+            this.nr = nr;
+            this.leistung = leistung;
+            this.kategorie = kategorie;
+        }
+        //public Aufg2 (){}
+        public override string ToString(){
+            return String.Format("{0,5}; {1,5}; {2,5}; {3,5}", bezeichnung, nr, leistung, kategorie);
+        }
+    }
 
     static void Aufg1() {
         char[] input = Console.ReadLine().ToCharArray();
@@ -54,6 +83,10 @@ public class Program
             morseCode = MorseTable.GetMorseCode(c).ToCharArray();
             Flash(morseCode);
         }
+        Aufg2 test = new Aufg2("Test", 1, 2.3, Kategorie.NONE);
+        Aufg2 abc = new Aufg2();
+        Console.WriteLine(test.ToString());
+        Console.WriteLine(abc.ToString());
     }
 
     static void Main(string[] args)
