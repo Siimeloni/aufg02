@@ -75,7 +75,7 @@ public class Program
         }
     }
 
-    static void Aufg1() {
+    static void Aufg01() {
         char[] input = Console.ReadLine().ToCharArray();
         Console.Clear();
         char[] morseCode;
@@ -83,14 +83,20 @@ public class Program
             morseCode = MorseTable.GetMorseCode(c).ToCharArray();
             Flash(morseCode);
         }
+        
+    }
+    
+    static void Aufg02(){
         Aufg2 test = new Aufg2("Test", 1, 2.3, Kategorie.NONE);
         Aufg2 abc = new Aufg2();
         Console.WriteLine(test.ToString());
         Console.WriteLine(abc.ToString());
     }
 
+
     static void Main(string[] args)
     {
-        Aufg1();
+        Aufg01();
+        Aufg02();
     }
 }
