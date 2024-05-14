@@ -75,6 +75,15 @@ public class Program
         }
     }
 
+    //Aufgabe 4:
+    class Smartphone{
+        private int Pin;
+        private int error;
+        private bool gesperrt;
+        
+
+    }
+
     static void Aufg01() {
         char[] input = Console.ReadLine().ToCharArray();
         Console.Clear();
