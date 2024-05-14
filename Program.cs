@@ -77,10 +77,17 @@ public class Program
 
     //Aufgabe 4:
     class Smartphone{
-        private int Pin;
+        private int ?pin = null;
+        private int pin_pruef;
         private int error;
         private bool gesperrt;
-        
+
+        private void Autentifizierung(){
+            if (pin != null){
+                Console.WriteLine("Hier bitte den Pin eingeben: ");
+                pin_pruef = int.Parse(Console.ReadLine());
+            }
+        }
 
     }
 
