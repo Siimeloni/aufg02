@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
 using System.Threading;
 
 public class Program
 {
+    //AUFGABE 1 :
     static void Flash(char[] c){
         int dit = 200;
         int dah = 3*dit;
@@ -45,6 +48,7 @@ public class Program
         }
         Thread.Sleep(interLetterBreak);
     }
+
     // AUFGABE 2 :
     enum Kategorie{THERMO, ELEKTRO, NONE}
     class Aufg2{
@@ -75,6 +79,39 @@ public class Program
         }
     }
 
+    // AUFGABE 3 :
+    public struct Size {
+
+        public Size(double w, double h) {
+            if (w < 0.0 || h < 0.0) {
+                throw new ArgumentException("Only positive numbers are allowed for width and height!");
+            }
+            this.width = w;
+            this.height = h;
+        }
+        private double width;
+        private double height;
+        public double Width {
+            get => width;
+            set{
+                if (value < 0.0) {
+                    throw new ArgumentException("Only positive numbers are allowed for width!");
+                }
+                width = value;
+            }
+        }
+        public double Height {
+            get => height;
+            set{
+                if (value < 0.0) {
+                    throw new ArgumentException("Only positive numbers are allowed for height!");
+                }
+                height = value;
+            }
+        }
+    }
+
+    // AUFGABEN MAIN FUNCTIONS
     static void Aufg01() {
         char[] input = Console.ReadLine().ToCharArray();
         Console.Clear();
@@ -83,9 +120,8 @@ public class Program
             morseCode = MorseTable.GetMorseCode(c).ToCharArray();
             Flash(morseCode);
         }
-        
     }
-    
+
     static void Aufg02(){
         Aufg2 test = new Aufg2("Test", 1, 2.3, Kategorie.NONE);
         Aufg2 abc = new Aufg2();
@@ -93,10 +129,26 @@ public class Program
         Console.WriteLine(abc.ToString());
     }
 
+    static void Aufg03(){
+        Size square = new Size(12, 12.0);
+        System.Console.WriteLine("Square is {0} wide and {1} high.\n", square.Width, square.Height);
+
+        System.Console.Write("Please enter Width: ");
+        double width = double.Parse(Console.ReadLine());
+        System.Console.Write("Please enter Height: ");
+        double height = double.Parse(Console.ReadLine());
+
+        Size shape = new Size();
+        shape.Width = width;
+        shape.Height = height;
+        System.Console.WriteLine("The shape is {0} wide and {1} high.", shape.Width, shape.Height);
+    }
+
 
     static void Main(string[] args)
     {
-        Aufg01();
-        Aufg02();
+        //Aufg01();
+        //Aufg02();
+        Aufg03();
     }
 }
