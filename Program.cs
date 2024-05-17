@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
+using System.Globalization;
+using System.Net.NetworkInformation;
 using System.Threading;
 
 public class Program
@@ -145,6 +147,62 @@ static void FlashConsoleWindow (int delay)
             }
         }
     }
+  
+    //Aufgabe 4:
+    class Smartphone{
+        private int ?pin = null;
+        private int pin_pruef, n=1;
+        private bool gesperrt = false;
+        private string text="";
+        private void Autentifizierung(){
+            if (pin != null && gesperrt == false){
+                do{
+                    Console.WriteLine("Hier bitte den Pin eingeben: ");
+                    pin_pruef = int.Parse(Console.ReadLine());
+                    if (pin_pruef == pin){
+                        Console.WriteLine("TRUE (Pin war richtig :-) )");
+                        gesperrt = false;
+                        break;
+                    }else{
+                        Console.WriteLine("Pin war nicht richtig, Sie haben noch "+ (3-n) +" Versuche !");
+                        gesperrt = true;
+                    }
+                    n++;
+                } while (n < 4);
+
+                if (gesperrt == true) {
+                    Console.WriteLine("False (Pin war nicht richtig :-( ); Smartphone wird gespert");
+                }else{
+                    n=1;
+                }
+
+            }else{
+                Console.WriteLine("Fehler! Pin vorhanden?: " + (pin != null) + 
+                "| Smartphone gesperrt?: " + (gesperrt == true));
+            }
+        }    //Ende void Autentifizierung()
+
+        public void Set_pin(){
+            Autentifizierung();
+            if (gesperrt == false){
+                Console.WriteLine("Hier bitte NEUEN Pin eingeben: ");
+                text = Console.ReadLine();
+                if(Test(text) == "true"){ pin= null;}
+
+            }else{
+                Console.WriteLine("Autentifizierung fehl geschlagen Smartphone bleibt für immer gesperrt!!!");
+            }
+
+        } //Ende void Set_pin()
+
+        String Test(string s){
+        if (String.IsNullOrEmpty(s))
+            return "true";
+        else
+            return String.Format("false");
+        }
+
+    }
 
     // AUFGABEN MAIN FUNCTIONS
     static void Aufg01() {
@@ -183,6 +241,10 @@ static void FlashConsoleWindow (int delay)
         shape.Width = width;
         shape.Height = height;
         System.Console.WriteLine("The shape is {0} wide and {1} high.", shape.Width, shape.Height);
+  
+    static void Aufg04(){
+        Smartphone Rudi = new Smartphone();
+        Rudi.Set_pin();
     }
 
 
@@ -190,6 +252,7 @@ static void FlashConsoleWindow (int delay)
     {
         //Aufg01();
         //Aufg02();
-        Aufg03();
+        //Aufg03();
+        //Aufg04();
     }
 }
