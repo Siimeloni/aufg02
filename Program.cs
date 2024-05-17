@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
 using System.Globalization;
 using System.Net.NetworkInformation;
 using System.Threading;
 
 public class Program
 {
+    //AUFGABE 1 :
     static void Flash(char[] c){
         int dit = 200;
         int dah = 3*dit;
@@ -47,6 +50,7 @@ public class Program
         }
         Thread.Sleep(interLetterBreak);
     }
+
 static void MorseString (string s)
 {
     foreach (var c in s)
@@ -112,6 +116,38 @@ static void FlashConsoleWindow (int delay)
         }
     }
 
+    // AUFGABE 3 :
+    public struct Size {
+
+        public Size(double w, double h) {
+            if (w < 0.0 || h < 0.0) {
+                throw new ArgumentException("Only positive numbers are allowed for width and height!");
+            }
+            this.width = w;
+            this.height = h;
+        }
+        private double width;
+        private double height;
+        public double Width {
+            get => width;
+            set{
+                if (value < 0.0) {
+                    throw new ArgumentException("Only positive numbers are allowed for width!");
+                }
+                width = value;
+            }
+        }
+        public double Height {
+            get => height;
+            set{
+                if (value < 0.0) {
+                    throw new ArgumentException("Only positive numbers are allowed for height!");
+                }
+                height = value;
+            }
+        }
+    }
+  
     //Aufgabe 4:
     class Smartphone{
         private int ?pin = null;
@@ -168,6 +204,7 @@ static void FlashConsoleWindow (int delay)
 
     }
 
+    // AUFGABEN MAIN FUNCTIONS
     static void Aufg01() {
         char[] input = Console.ReadLine().ToCharArray();
         Console.Clear();
@@ -176,8 +213,8 @@ static void FlashConsoleWindow (int delay)
             morseCode = MorseTable.GetMorseCode(c).ToCharArray();
             Flash(morseCode);
         }
-        
     }
+
 // Carls Version
     static void Aufg01C() {
         Console.Write("To morse -> ");
@@ -191,6 +228,20 @@ static void FlashConsoleWindow (int delay)
         Console.WriteLine(abc.ToString());
     }
 
+    static void Aufg03(){
+        Size square = new Size(12, 12.0);
+        System.Console.WriteLine("Square is {0} wide and {1} high.\n", square.Width, square.Height);
+
+        System.Console.Write("Please enter Width: ");
+        double width = double.Parse(Console.ReadLine());
+        System.Console.Write("Please enter Height: ");
+        double height = double.Parse(Console.ReadLine());
+
+        Size shape = new Size();
+        shape.Width = width;
+        shape.Height = height;
+        System.Console.WriteLine("The shape is {0} wide and {1} high.", shape.Width, shape.Height);
+  
     static void Aufg04(){
         Smartphone Rudi = new Smartphone();
         Rudi.Set_pin();
@@ -201,6 +252,7 @@ static void FlashConsoleWindow (int delay)
     {
         //Aufg01();
         //Aufg02();
-        Aufg04();
+        //Aufg03();
+        //Aufg04();
     }
 }
