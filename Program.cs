@@ -241,6 +241,7 @@ static void FlashConsoleWindow (int delay)
         shape.Width = width;
         shape.Height = height;
         System.Console.WriteLine("The shape is {0} wide and {1} high.", shape.Width, shape.Height);
+    }
   
     static void Aufg04(){
         Smartphone Rudi = new Smartphone();
