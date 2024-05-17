@@ -79,7 +79,7 @@ public class Program
 
     //Aufgabe 4:
     class Smartphone{
-        private int ?pin = 1234;
+        private int ?pin = null;
         private int pin_pruef, n=1;
         private bool gesperrt = false;
         private string text="";
