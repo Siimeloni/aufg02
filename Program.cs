@@ -49,6 +49,41 @@ public class Program
         Thread.Sleep(interLetterBreak);
     }
 
+static void MorseString (string s)
+{
+    foreach (var c in s)
+    {
+        MorseChar(MorseTable.GetMorseCode(c)); 
+    }
+}
+
+static void MorseChar ( string symbols )
+{
+    foreach (var symbol in symbols)
+    {
+        switch (symbol)
+        {
+            case '.': FlashConsoleWindow(200); break;
+            case '-': FlashConsoleWindow(3 * 200); break;
+            case ' ': Thread.Sleep(7 * 200); break;
+                default: throw new Exception("Unexpected morse symbol " + symbol);
+
+        }
+    }
+}
+static void FlashConsoleWindow (int delay) 
+{
+    Console.BackgroundColor = ConsoleColor.Green;
+    Console.Clear();
+
+    Thread.Sleep(delay);
+
+    Console.BackgroundColor = ConsoleColor.Black;
+    Console.Clear();
+
+    Thread.Sleep (700);
+}
+    
     // AUFGABE 2 :
     enum Kategorie{THERMO, ELEKTRO, NONE}
     class Aufg2{
@@ -122,6 +157,12 @@ public class Program
         }
     }
 
+// Carls Version
+    static void Aufg01C() {
+        Console.Write("To morse -> ");
+        MorseString(Console.ReadLine());
+    }
+    
     static void Aufg02(){
         Aufg2 test = new Aufg2("Test", 1, 2.3, Kategorie.NONE);
         Aufg2 abc = new Aufg2();
